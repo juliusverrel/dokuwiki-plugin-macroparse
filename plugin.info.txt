@@ -1,0 +1,8 @@
+
+base   macroparse
+author Julius Verrel
+email  jv.git@posteo.de
+date   2018-10-18
+name   MacroParse
+desc   Parse contents after replacing macros by values
+url    https://www.dokuwiki.org/plugin:macroparse
