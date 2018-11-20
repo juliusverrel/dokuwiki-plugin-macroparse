@@ -9,7 +9,7 @@
     // must be run within Dokuwiki
     if (!defined('DOKU_INC')) die();
      
-    class syntax_plugin_phpwikify extends DokuWiki_Syntax_Plugin
+    class syntax_plugin_macroparse extends DokuWiki_Syntax_Plugin
     {
         function getInfo(){
             return array(
