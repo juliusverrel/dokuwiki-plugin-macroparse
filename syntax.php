@@ -51,7 +51,7 @@
             if($mode == 'xhtml'){
                 list($state, $data) = $data;
                 if ($state === DOKU_LEXER_UNMATCHED) {
-                    $data = $this->_apply_macro($data)
+                    $data = $this->_apply_macro($data);
                     $renderer->doc .= p_render( "xhtml", p_get_instructions( $data ), $info );
                 }
                 return true;
