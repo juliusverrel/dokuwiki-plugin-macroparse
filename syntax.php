@@ -1,4 +1,4 @@
-    <?php
+<?php
     /**
      * MacroParse plugin: parse contents AFTER replacing macros by values
      *
