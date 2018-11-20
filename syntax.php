@@ -53,6 +53,7 @@
                 if ($state === DOKU_LEXER_UNMATCHED) {
                     b_start();
                     $data = $this->_apply_macro($data);
+                    echo "Macroparse:\n\n";
                     echo $data;
                     $renderer->doc .= p_render( "xhtml", p_get_instructions( ob_get_contents() ), $info );
                     ob_end_clean();
