@@ -52,7 +52,7 @@
                 list($state, $data) = $data;
                 if ($state === DOKU_LEXER_UNMATCHED) {
                     b_start();
-                    $data = $this->_apply_macro($data);
+                    //$data = $this->_apply_macro($data);
                     echo "Macroparse:\n\n";
                     echo $data;
                     $renderer->doc .= p_render( "xhtml", p_get_instructions( ob_get_contents() ), $info );
@@ -67,7 +67,7 @@
        * inserts user or date dependent values
          COPIED FROM INCLUDE PLUGIN
        */
-      function _apply_macro($id, $parent_id) {
+      function _apply_macro($id) {
           global $INFO;
           global $auth;
 
@@ -113,7 +113,6 @@
                   '@USER@'  => cleanID($user),
                   '@NAME@'  => cleanID($INFO['userinfo']['name']),
                   '@GROUP@' => cleanID($group),
-                  '@BROWSER_LANG@'  => $this->_get_language_of_wiki($id, $parent_id),
                   '@YEAR@'  => date('Y',$time_stamp),
                   '@MONTH@' => date('m',$time_stamp),
                   '@WEEK@' => date('W',$time_stamp),
