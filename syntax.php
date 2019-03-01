@@ -51,7 +51,7 @@
             if($mode == 'xhtml'){
                 list($state, $data) = $data;
                 if ($state === DOKU_LEXER_UNMATCHED) {
-                    b_start();
+                    ob_start();
                     //$data = $this->_apply_macro($data);
                     echo "Macroparse:\n\n";
                     //echo $data;
