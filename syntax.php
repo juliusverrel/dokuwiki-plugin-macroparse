@@ -66,7 +66,7 @@
        /**
        * inserts user or date dependent values
        *
-       * COPIED FROM INCLUDE PLUGIN
+       * (adapted from include and struct plugin)
        */
       function _apply_macro($data) {
           global $INFO;
