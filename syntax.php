@@ -67,68 +67,29 @@
        * inserts user or date dependent values
          COPIED FROM INCLUDE PLUGIN
        */
-      function _apply_macro($id) {
+      function _apply_macro($data) {
           global $INFO;
           global $auth;
 
-          // if we don't have an auth object, do nothing
-          if (!$auth) return $id;
-          $user     = $_SERVER['REMOTE_USER'];
-          $group    = $INFO['userinfo']['grps'][0];
-          // set group for unregistered users
-          if (!isset($group)) {
-              $group = 'ALL';
-          }
-          $time_stamp = time();
-          if(preg_match('/@DATE(\w+)@/',$id,$matches)) {
-              switch($matches[1]) {
-              case 'PMONTH':
-                  $time_stamp = strtotime("-1 month");
-                  break;
-              case 'NMONTH':
-                  $time_stamp = strtotime("+1 month");
-                  break;
-              case 'NWEEK':
-                  $time_stamp = strtotime("+1 week");
-                  break;
-              case 'PWEEK':
-                  $time_stamp = strtotime("-1 week");
-                  break;
-              case 'TOMORROW':
-                  $time_stamp = strtotime("+1 day");
-                  break;
-              case 'YESTERDAY':
-                  $time_stamp = strtotime("-1 day");
-                  break;
-              case 'NYEAR':
-                  $time_stamp = strtotime("+1 year");
-                  break;
-              case 'PYEAR':
-                  $time_stamp = strtotime("-1 year");
-                  break;
-              }
-              $id = preg_replace('/@DATE(\w+)@/','', $id);
-          }
           $replace = array(
-                  '@USER@'  => cleanID($user),
-                  '@CLEANNAME@'  => cleanID($INFO['userinfo']['name']),
-                  '@FULLNAME@'  => $INFO['userinfo']['name'],
-                  '@GROUP@' => cleanID($group),
-                  '@YEAR@'  => date('Y',$time_stamp),
-                  '@MONTH@' => date('m',$time_stamp),
-                  '@WEEK@' => date('W',$time_stamp),
-                  '@DAY@'   => date('d',$time_stamp),
-                  '@YEARPMONTH@' => date('Ym',strtotime("-1 month")),
-                  '@PMONTH@' => date('m',strtotime("-1 month")),
-                  '@NMONTH@' => date('m',strtotime("+1 month")),
-                  '@YEARNMONTH@' => date('Ym',strtotime("+1 month")),
-                  '@YEARPWEEK@' => date('YW',strtotime("-1 week")),
-                  '@PWEEK@' => date('W',strtotime("-1 week")),
-                  '@NWEEK@' => date('W',strtotime("+1 week")),
-                  '@YEARNWEEK@' => date('YW',strtotime("+1 week")),
-                  );
-          return str_replace(array_keys($replace), array_values($replace), $id);
-      }
+                    '@ID@' => $INFO['id'],
+                    '@NS@' => getNS($INFO['id']),
+                    '@PAGE@' => noNS($INFO['id']),
+                    '@YEAR@'  => date('Y'),
+                    '@MONTH@' => date('m'),
+                    '@WEEK@' => date('W'),
+                    '@DAY@'   => date('d'),                    
+                    '@TODAY@' => date('Y-m-d'));
+          if (!$auth) {
+              $replace = array_merge($replace, array(
+                    '@USER@' => $_SERVER['REMOTE_USER']
+                    '@CLEANNAME@'  => cleanID($INFO['userinfo']['name']),
+                    '@FULLNAME@'  => $INFO['userinfo']['name']));
+          }       
+ 
+          return str_replace(array_keys($replace), array_values($replace), $data);     
+      }         
+       
     }
-
 ?>
+
