@@ -90,12 +90,20 @@
                     '@TODAY@' => date('Y-m-d'));
           if ($auth) {
               $email = $INFO['userinfo']['mail'];
-              $email_parts = preg_split("/@/", $email);
+              $email_parts = preg_split("/[@|\.]/", $email);
+              if ($email_parts[1]=='student') {
+                  $email_short = $email_parts[0].'_student';
+              } else {
+                  $email_short = $email_parts[0];
+              }
               $replace = array_merge($replace, array(
                     '@USER@' => $_SERVER['REMOTE_USER'],
                     '@EMAIL@' => $email,
+                    '@EMAILSHORT@' => $email_short,
                     '@EMAILNAME@' => $email_parts[0],
                     '@CLEANEMAIL@' => cleanID($email),
+                    '@CLEANEMAILNAME@' => cleanID($email_parts[0]),
+                    '@CLEANEMAILSHORT@' => cleanID($email_short),
                     '@CLEANNAME@'  => cleanID($INFO['userinfo']['name']),
                     '@FULLNAME@'  => $INFO['userinfo']['name']));
           }       
