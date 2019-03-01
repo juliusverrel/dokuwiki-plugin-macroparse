@@ -65,7 +65,8 @@
         
        /**
        * inserts user or date dependent values
-         COPIED FROM INCLUDE PLUGIN
+       *
+       * COPIED FROM INCLUDE PLUGIN
        */
       function _apply_macro($data) {
           global $INFO;
