@@ -80,7 +80,7 @@
                     '@WEEK@' => date('W'),
                     '@DAY@'   => date('d'),                    
                     '@TODAY@' => date('Y-m-d'));
-          if (!$auth) {
+          if ($auth) {
               $replace = array_merge($replace, array(
                     '@USER@' => $_SERVER['REMOTE_USER'],
                     '@CLEANNAME@'  => cleanID($INFO['userinfo']['name']),
