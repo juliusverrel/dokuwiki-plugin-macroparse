@@ -71,9 +71,16 @@
           global $INFO;
           global $auth;
 
+          $id = $INFO['id'];
+          $nslist = preg_split("/:/", $id);
+          array_pop($pglist);  // pop the page name
+          $lastns = array_pop($pglist); // get "last" ns
+
+          
           $replace = array(
                     '@ID@' => $INFO['id'],
                     '@NS@' => getNS($INFO['id']),
+                    '@LASTNS@' => $lastns,
                     '@PAGE@' => noNS($INFO['id']),
                     '@YEAR@'  => date('Y'),
                     '@MONTH@' => date('m'),
