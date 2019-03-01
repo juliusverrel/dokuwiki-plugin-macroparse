@@ -111,7 +111,8 @@
           }
           $replace = array(
                   '@USER@'  => cleanID($user),
-                  '@NAME@'  => cleanID($INFO['userinfo']['name']),
+                  '@CLEANNAME@'  => cleanID($INFO['userinfo']['name']),
+                  '@FULLNAME@'  => $INFO['userinfo']['name'],
                   '@GROUP@' => cleanID($group),
                   '@YEAR@'  => date('Y',$time_stamp),
                   '@MONTH@' => date('m',$time_stamp),
