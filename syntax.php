@@ -82,7 +82,7 @@
                     '@TODAY@' => date('Y-m-d'));
           if (!$auth) {
               $replace = array_merge($replace, array(
-                    '@USER@' => $_SERVER['REMOTE_USER']
+                    '@USER@' => $_SERVER['REMOTE_USER'],
                     '@CLEANNAME@'  => cleanID($INFO['userinfo']['name']),
                     '@FULLNAME@'  => $INFO['userinfo']['name']));
           }       
