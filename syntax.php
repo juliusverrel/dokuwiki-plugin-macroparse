@@ -90,11 +90,10 @@
                     '@TODAY@' => date('Y-m-d'));
           if ($auth) {
               $email = $INFO['userinfo']['mail'];
-              $email_parts = preg_split("/[@|\.]/", $email);
-              if ($email_parts[1]=='student') {
-                  $email_short = $email_parts[0].'_student';
-              } else {
-                  $email_short = $email_parts[0];
+              $email_parts = preg_split("/@/", $email);
+              $email_short = $email_parts[0]
+              if (preg_match('/student/', $email_parts[1]) {
+                  $email_short = $email_short.'_student';
               }
               $replace = array_merge($replace, array(
                     '@USER@' => $_SERVER['REMOTE_USER'],
