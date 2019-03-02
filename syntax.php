@@ -74,8 +74,8 @@
 
           $id = $INFO['id'];
           $nslist = preg_split("/:/", $id);
-          array_pop($pglist);  // pop the page name
-          $lastns = array_pop($pglist); // get "last" ns
+          array_pop($nslist);  // pop the page name
+          $lastns = array_pop($nslist); // get "last" ns
 
           
           $replace = array(
