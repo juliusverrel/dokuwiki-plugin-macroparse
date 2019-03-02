@@ -92,7 +92,7 @@
               $email = $INFO['userinfo']['mail'];
               $email_parts = preg_split("/@/", $email);
               $email_short = $email_parts[0];
-              if (preg_match('/student/', $email_parts[1]) {
+              if (preg_match('/student/', $email_parts[1])) {
                   $email_short = $email_short.'_student';
               }
               $replace = array_merge($replace, array(
