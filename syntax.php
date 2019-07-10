@@ -83,6 +83,7 @@
                     '@NS@' => getNS($INFO['id']),
                     '@LASTNS@' => $lastns,
                     '@PAGE@' => noNS($INFO['id']),
+                    '@TITLE@' => ($INFO['meta']['title']) ? $INFO['meta']['title'] : 'TITLE',
                     '@YEAR@'  => date('Y'),
                     '@MONTH@' => date('m'),
                     '@WEEK@' => date('W'),
@@ -107,7 +108,7 @@
                     '@FULLNAME@'  => $INFO['userinfo']['name']));
           }       
  
-          return str_replace(array_keys($replace), array_values($replace), $data);     
+          return str_ireplace(array_keys($replace), array_values($replace), $data);     
       }         
        
     }
